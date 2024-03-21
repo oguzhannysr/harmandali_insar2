@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/filter.css">
+<link rel="stylesheet" href="css/nouislider.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="js/tailDT.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/wNumb.js"></script>
+        <script src="data/LOSYnYerDeitirmeAscendingmm_1.js"></script>
+        <script src="data/LOSYnYerDeitirmeDescendingmm_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[38.52152599052077,27.056442992217683],[38.54492189749972,27.080512485769916]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleSatellite_0');
+        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
+        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_GoogleSatellite_0;
+        map.addLayer(layer_GoogleSatellite_0);
+        function pop_LOSYnYerDeitirmeAscendingmm_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VALUE'] !== null ? autolinker.link(feature.properties['VALUE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LOSYnYerDeitirmeAscendingmm_1_0(feature) {
+            if (feature.properties['VALUE'] >= -198.970673 && feature.properties['VALUE'] <= -115.366574 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeAscendingmm_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,4,3,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= -115.366574 && feature.properties['VALUE'] <= -31.762476 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeAscendingmm_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(251,126,33,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= -31.762476 && feature.properties['VALUE'] <= 51.841623 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeAscendingmm_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,252,60,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= 51.841623 && feature.properties['VALUE'] <= 135.445721 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeAscendingmm_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,188,235,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= 135.445721 && feature.properties['VALUE'] <= 219.049820 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeAscendingmm_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(48,18,59,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_LOSYnYerDeitirmeAscendingmm_1');
+        map.getPane('pane_LOSYnYerDeitirmeAscendingmm_1').style.zIndex = 401;
+        map.getPane('pane_LOSYnYerDeitirmeAscendingmm_1').style['mix-blend-mode'] = 'normal';
+        var layer_LOSYnYerDeitirmeAscendingmm_1 = new L.geoJson(json_LOSYnYerDeitirmeAscendingmm_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LOSYnYerDeitirmeAscendingmm_1',
+            layerName: 'layer_LOSYnYerDeitirmeAscendingmm_1',
+            pane: 'pane_LOSYnYerDeitirmeAscendingmm_1',
+            onEachFeature: pop_LOSYnYerDeitirmeAscendingmm_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_LOSYnYerDeitirmeAscendingmm_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_LOSYnYerDeitirmeAscendingmm_1);
+        function pop_LOSYnYerDeitirmeDescendingmm_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VALUE'] !== null ? autolinker.link(feature.properties['VALUE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LOSYnYerDeitirmeDescendingmm_2_0(feature) {
+            if (feature.properties['VALUE'] >= -290.583740 && feature.properties['VALUE'] <= -190.047058 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeDescendingmm_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,4,3,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= -190.047058 && feature.properties['VALUE'] <= -89.510376 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeDescendingmm_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(251,126,33,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= -89.510376 && feature.properties['VALUE'] <= 11.026306 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeDescendingmm_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,252,60,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= 11.026306 && feature.properties['VALUE'] <= 111.562988 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeDescendingmm_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,188,235,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['VALUE'] >= 111.562988 && feature.properties['VALUE'] <= 212.099670 ) {
+                return {
+                pane: 'pane_LOSYnYerDeitirmeDescendingmm_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(48,18,59,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_LOSYnYerDeitirmeDescendingmm_2');
+        map.getPane('pane_LOSYnYerDeitirmeDescendingmm_2').style.zIndex = 402;
+        map.getPane('pane_LOSYnYerDeitirmeDescendingmm_2').style['mix-blend-mode'] = 'normal';
+        var layer_LOSYnYerDeitirmeDescendingmm_2 = new L.geoJson(json_LOSYnYerDeitirmeDescendingmm_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LOSYnYerDeitirmeDescendingmm_2',
+            layerName: 'layer_LOSYnYerDeitirmeDescendingmm_2',
+            pane: 'pane_LOSYnYerDeitirmeDescendingmm_2',
+            onEachFeature: pop_LOSYnYerDeitirmeDescendingmm_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_LOSYnYerDeitirmeDescendingmm_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_LOSYnYerDeitirmeDescendingmm_2);
+        map.addLayer(layer_LOSYnYerDeitirmeDescendingmm_2);
+            var abstract = new L.Control({'position':'topright'});
+            abstract.onAdd = function (map) {
+                this._div = L.DomUtil.create('div',
+                'leaflet-control abstract');
+                this._div.id = 'abstract'
+
+                    abstract.show();
+                    return this._div;
+                };
+                abstract.show = function () {
+                    this._div.classList.remove("abstract");
+                    this._div.classList.add("abstractUncollapsed");
+                    this._div.innerHTML = '01/2018/-12/2020 Yer Değiştirme Haritası (mm)<br /><br />';
+            };
+            abstract.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'LOS Yönü Yer Değiştirme (Descending,mm)<br /><table><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeDescendingmm_2_2911900.png" /></td><td>-291 - -190</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeDescendingmm_2_190901.png" /></td><td>-190 - -90</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeDescendingmm_2_90112.png" /></td><td>-90 - 11</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeDescendingmm_2_111123.png" /></td><td>11 - 112</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeDescendingmm_2_1122124.png" /></td><td>112 - 212</td></tr></table>': layer_LOSYnYerDeitirmeDescendingmm_2,'LOS Yönü Yer Değiştirme (Ascending,mm)<br /><table><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeAscendingmm_1_1991150.png" /></td><td>-199 - -115</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeAscendingmm_1_115321.png" /></td><td>-115 - -32</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeAscendingmm_1_32522.png" /></td><td>-32 - 52</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeAscendingmm_1_521353.png" /></td><td>52 - 135</td></tr><tr><td style="text-align: center;"><img src="legend/LOSYnYerDeitirmeAscendingmm_1_1352194.png" /></td><td>135 - 219</td></tr></table>': layer_LOSYnYerDeitirmeAscendingmm_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        setBounds();
+        var mapDiv = document.getElementById('map');
+        var row = document.createElement('div');
+        row.className="row";
+        row.id="all";
+        row.style.height = "100%";
+        var col1 = document.createElement('div');
+        col1.className="col9";
+        col1.id = "mapWindow";
+        col1.style.height = "99%";
+        col1.style.width = "80%";
+        col1.style.display = "inline-block";
+        var col2 = document.createElement('div');
+        col2.className="col3";
+        col2.id = "menu";
+        col2.style.display = "inline-block";
+        mapDiv.parentNode.insertBefore(row, mapDiv);
+        document.getElementById("all").appendChild(col1);
+        document.getElementById("all").appendChild(col2);
+        col1.appendChild(mapDiv)
+        var Filters = {"VALUE": "real"};
+        function filterFunc() {
+          map.eachLayer(function(lyr){
+          if ("options" in lyr && "dataVar" in lyr["options"]){
+            features = this[lyr["options"]["dataVar"]].features.slice(0);
+            try{
+              for (key in Filters){
+                keyS = key.replace(/[^a-zA-Z0-9_]/g, "")
+                if (Filters[key] == "str" || Filters[key] == "bool"){
+                  var selection = [];
+                  var options = document.getElementById("sel_" + keyS).options
+                  for (var i=0; i < options.length; i++) {
+                    if (options[i].selected) selection.push(options[i].value);
+                  }
+                    try{
+                      if (key in features[0].properties){
+                        for (i = features.length - 1;
+                          i >= 0; --i){
+                          if (selection.indexOf(
+                          features[i].properties[key])<0
+                          && selection.length>0) {
+                          features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                  }
+                }
+                if (Filters[key] == "int"){
+                  sliderVals =  document.getElementById(
+                    "div_" + keyS).noUiSlider.get();
+                  try{
+                    if (key in features[0].properties){
+                    for (i = features.length - 1; i >= 0; --i){
+                      if (parseInt(features[i].properties[key])
+                          < sliderVals[0]
+                          || parseInt(features[i].properties[key])
+                          > sliderVals[1]){
+                            features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                    }
+                  }
+                if (Filters[key] == "real"){
+                  sliderVals =  document.getElementById(
+                    "div_" + keyS).noUiSlider.get();
+                  try{
+                    if (key in features[0].properties){
+                    for (i = features.length - 1; i >= 0; --i){
+                      if (features[i].properties[key]
+                          < sliderVals[0]
+                          || features[i].properties[key]
+                          > sliderVals[1]){
+                            features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                    }
+                  }
+                if (Filters[key] == "date"
+                  || Filters[key] == "datetime"
+                  || Filters[key] == "time"){
+                  try{
+                    if (key in features[0].properties){
+                      HTMLkey = key.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g, '');
+                      startdate = document.getElementById("dat_" +
+                        HTMLkey + "_date1").value.replace(" ", "T");
+                      enddate = document.getElementById("dat_" +
+                        HTMLkey + "_date2").value.replace(" ", "T");
+                      for (i = features.length - 1; i >= 0; --i){
+                        if (features[i].properties[key] < startdate
+                          || features[i].properties[key] > enddate){
+                          features.splice(i,1);
+                        }
+                      }
+                    }
+                  } catch(err){
+                  }
+                }
+              }
+            } catch(err){
+            }
+          this[lyr["options"]["layerName"]].clearLayers();
+          this[lyr["options"]["layerName"]].addData(features);
+          }
+          })
+        }
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_VALUE = document.createElement("div");
+            div_VALUE.id = "div_VALUE";
+            div_VALUE.className = "slider";
+            document.getElementById("menu").appendChild(div_VALUE);
+            var lab_VALUE = document.createElement('div');
+            lab_VALUE.innerHTML  = 'VALUE: <span id="val_VALUE"></span>';
+            lab_VALUE.className = 'filterlabel';
+            document.getElementById("menu").appendChild(lab_VALUE);
+            var reset_VALUE = document.createElement('div');
+            reset_VALUE.innerHTML = 'clear filter';
+            reset_VALUE.className = 'filterlabel';
+            lab_VALUE.className = 'filterlabel';
+            reset_VALUE.onclick = function() {
+                sel_VALUE.noUiSlider.reset();
+            };
+            document.getElementById("menu").appendChild(reset_VALUE);
+            var sel_VALUE = document.getElementById('div_VALUE');
+            noUiSlider.create(sel_VALUE, {
+                connect: true,
+                start: [-290.583740234375, 219.04981994628906],
+                range: {
+                min: -290.583740234375,
+                max: 219.04981994628906
+                }
+            });
+            sel_VALUE.noUiSlider.on('update', function (values) {
+            val_VALUE = document.getElementById('val_VALUE');
+            val_VALUE.innerHTML = values.join(' - ');
+                filterFunc()
+            });
+        </script>
+    </body>
+</html>
+<div id="map" style="position: relative;">
+    <!-- Harita -->
+</div>
+
+<div id="sagAltGorsel" style="position: fixed; bottom: 0; right: 0; z-index: 1;">
+    <img src="https://static.wixstatic.com/media/140a3e_18a9f082e4e14f409ac958627c6c7c1e~mv2.png/v1/crop/x_180,y_0,w_1847,h_2182/fill/w_180,h_212,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Logo%20Mavi_edited.png" alt="Alt Görsel" style="width: 150px; height: auto;">
+</div>
